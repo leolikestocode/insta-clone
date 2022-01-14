@@ -7,6 +7,10 @@ interface IResults {
   picture: {
     thumbnail: string;
   };
+  location: {
+    city: string;
+    country: string;
+  };
   name: {
     first: string;
     last: string;
@@ -18,25 +22,38 @@ interface ISuggestions {
   itemsRandom: IResults[];
 }
 
+let cachedData = null;
+
 const useGetSuggestions = (): ISuggestions => {
   const [suggestions, setSuggestions] = useState<ISuggestions>(null);
+
+  function setData(data: IResults[]) {
+    setSuggestions({
+      items: data,
+      itemsRandom: data.sort((a: IResults, b: IResults) =>
+        a.name.last > b.name.last ? 1 : -1
+      ),
+    });
+  }
+
   useEffect(() => {
     async function getData() {
-      const data = await fetch("https://randomuser.me/api?results=20").then(
+      if (cachedData) {
+        setData(cachedData);
+        return;
+      }
+
+      const data = await fetch(`https://randomuser.me/api?results=15`).then(
         (data) => data.json()
       );
 
-      setSuggestions({
-        items: data.results,
-        itemsRandom: data.results.sort((a: IResults, b: IResults) =>
-          a.name.last > b.name.last ? 1 : -1
-        ),
-      });
+      setData(data.results);
+      cachedData = data.results;
     }
+
     getData();
   }, []);
 
-  console.log(`suggestions`, suggestions);
   return suggestions;
 };
 
