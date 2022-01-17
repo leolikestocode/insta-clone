@@ -1,7 +1,5 @@
 import { signOut, useSession } from "next-auth/react";
 
-import Suggestions from "./Suggestions";
-
 function MiniProfile() {
   const { data: session } = useSession();
 
@@ -18,7 +16,10 @@ function MiniProfile() {
         <h3 className="text-sm text-gray-400">Welcome to Instagram</h3>
       </div>
 
-      <button onClick={signOut} className="text-blue-400 text-sm font-semibold">
+      <button
+        onClick={() => signOut()}
+        className="text-blue-400 text-sm font-semibold"
+      >
         Sign Out
       </button>
     </div>
