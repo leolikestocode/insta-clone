@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useGetSuggestions from "../hooks/useGetSuggestions";
 
 function Suggestions() {
@@ -13,7 +12,7 @@ function Suggestions() {
 
       {suggestions?.itemsRandom.slice(0, 5).map((user) => (
         <div
-          key={user.id.value}
+          key={user.email}
           className="flex items-center justify-between mt-3"
         >
           <img src={user.picture.thumbnail} alt={user.name.first} />

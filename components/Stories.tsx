@@ -14,7 +14,7 @@ function Stories() {
 
       {suggestions?.items?.map((user) => (
         <Story
-          key={user.id.value}
+          key={user.email}
           image={user.picture.thumbnail}
           username={`${user.name.first} ${user.name.last}`}
         />

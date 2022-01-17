@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 
 interface IResults {
-  id: {
-    value: number;
-  };
+  email: string;
   picture: {
     thumbnail: string;
   };
