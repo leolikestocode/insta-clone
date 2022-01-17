@@ -4,7 +4,7 @@ function MiniProfile() {
   const { data: session } = useSession();
 
   return (
-    <div className="flex items-center">
+    <div className="ml-10 flex items-center">
       <img
         src={session?.user?.image}
         alt="asa"
