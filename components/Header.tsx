@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/outline";
 import { useContext } from "react";
 import { HomeIcon } from "@heroicons/react/solid";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Context } from "../context/ContextProvider";
 
@@ -91,7 +91,7 @@ function Header() {
               </div>
             </>
           ) : (
-            <button onClick={() => router.push("/auth/signin")}>Sign in</button>
+            <button onClick={() => signIn()}>Sign in</button>
           )}
         </div>
       </div>
