@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   BookmarkIcon,
   ChatIcon,
@@ -31,6 +31,7 @@ function Post({ id, username, userImg, img, caption }) {
   const [comment, setComment] = useState("");
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
+  const commentRef = useRef(null);
 
   useEffect(
     () =>
@@ -110,7 +111,10 @@ function Post({ id, username, userImg, img, caption }) {
             ) : (
               <HeartIcon className="btn" onClick={sendLike} />
             )}
-            <ChatIcon className="btn" />
+            <ChatIcon
+              className="btn"
+              onClick={() => commentRef.current.focus()}
+            />
             <PaperAirplaneIcon className="btn rotate-45" />
           </div>
           <BookmarkIcon className="btn" />
@@ -161,6 +165,7 @@ function Post({ id, username, userImg, img, caption }) {
             onChange={(e) => setComment(e.target.value)}
             placeholder="Add a comment..."
             className="border-none flex-1 focus:ring-0 outline-none"
+            ref={commentRef}
           />
           <button
             onClick={sendComment}
