@@ -16,7 +16,7 @@ import { Context } from "../context/ContextProvider";
 function Header() {
   const { data: session } = useSession();
   const router = useRouter();
-  const { setModal } = useContext(Context);
+  const { setModalPost } = useContext(Context);
 
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
@@ -77,7 +77,7 @@ function Header() {
               </div>
               <PlusCircleIcon
                 className="navBtn"
-                onClick={() => setModal(true)}
+                onClick={() => setModalPost(true)}
               />
               <HeartIcon className="navBtn" />
               <UserGroupIcon className="navBtn" />

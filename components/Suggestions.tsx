@@ -1,7 +1,11 @@
-import useGetSuggestions from "../hooks/useGetSuggestions";
+import { useContext } from "react";
+
+import { Context } from "../context/ContextProvider";
 
 function Suggestions() {
-  const suggestions = useGetSuggestions();
+  const { suggestions } = useContext(Context);
+
+  console.log("suggestions", suggestions);
 
   return (
     <div className="mt-4 ml-10">

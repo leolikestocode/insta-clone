@@ -10,4 +10,8 @@
   .btn {
     @apply h-7 hover:scale-110 cursor-pointer transition-all duration-150 ease-out;
   }
+
+  .arrow {
+    @apply text-lg text-gray-500 w-7 h-7 cursor-pointer;
+  }
 }
