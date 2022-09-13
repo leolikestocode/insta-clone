@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 import {
   SearchIcon,
   PlusCircleIcon,
@@ -6,17 +6,17 @@ import {
   PaperAirplaneIcon,
   MenuIcon,
   UserGroupIcon,
-} from "@heroicons/react/outline";
-import { useContext } from "react";
-import { HomeIcon } from "@heroicons/react/solid";
-import { useSession, signOut, signIn } from "next-auth/react";
-import { useRouter } from "next/router";
-import { Context } from "../context/ContextProvider";
+} from "@heroicons/react/outline"
+import { useContext } from "react"
+import { HomeIcon } from "@heroicons/react/solid"
+import { useSession, signOut, signIn } from "next-auth/react"
+import { useRouter } from "next/router"
+import { Context } from "../context/ContextProvider"
 
 function Header() {
-  const { data: session } = useSession();
-  const router = useRouter();
-  const { setModalPost } = useContext(Context);
+  const { data: session } = useSession()
+  const router = useRouter()
+  const { setModalPost } = useContext(Context)
 
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
@@ -65,8 +65,10 @@ function Header() {
 
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" onClick={() => router.push("/")} />
-          <MenuIcon className="h-6 lg:hidden cursor-pointer" />
-
+          <PlusCircleIcon
+            className="h-6 lg:hidden cursor-pointer"
+            onClick={() => setModalPost(true)}
+          />
           {session ? (
             <>
               <div className="relative navBtn">
@@ -96,7 +98,7 @@ function Header() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
